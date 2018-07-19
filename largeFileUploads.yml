@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:  
+  nifi: 
+    image: apache/nifi:latest
+    ports: 
+      - 2888:8080
+    volumes:
+      - /tmp/nifi:/tmp/nifi  
+  php: 
+    image: tutum/apache-php
+    environment:
+     - ALLOW_OVERRIDE=true
+    volumes: 
+      - /home/www/:/var/www
+      - /var/log/applications/:/var/log/applications
+      - /tmp/nifi:/tmp/nifi
+    ports: 
+      - 80:80
+  db: 
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
