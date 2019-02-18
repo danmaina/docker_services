@@ -3,6 +3,8 @@ version: '3.3'
 services:  
   php: 
     image: tutum/apache-php
+    restart: unless-stopped
+    container_name: php_apache_server
     environment:
      - ALLOW_OVERRIDE=true
     volumes: 
