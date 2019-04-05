@@ -1,0 +1,15 @@
+rabbit1:
+  image: rabbitmq:3-management
+  hostname: rabbitmq
+  restart: unless-stopped
+  container_name: rabbitmq-container
+  environment:
+    RABBITMQ_ERLANG_COOKIE: SWQOKODSQALRPCLNMEQG
+    RABBITMQ_DEFAULT_USER: rabbitmq
+    RABBITMQ_DEFAULT_PASS: rabbitmq
+    RABBITMQ_DEFAULT_VHOST: /
+  ports:
+    - 15672:15672
+    - 5672:5672
+  volumes:
+    - /etc/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
