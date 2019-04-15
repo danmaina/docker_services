@@ -11,5 +11,3 @@ rabbit1:
   ports:
     - 15672:15672
     - 5672:5672
-  volumes:
-    - /etc/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins

@@ -12,8 +12,6 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports: 
       - 3358:3306
-    volumes: 
-      - /home/mysql/mysql8-data:/var/lib/mysql
 
   mysql57:
     image: mysql:5.7
@@ -23,8 +21,6 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports: 
       - 3357:3306
-    volumes:
-      - /home/mysql/mysql57-data:/var/lib/mysql
     
   mysql56:
     image: mysql:5.6
@@ -34,8 +30,6 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports: 
       - 3356:3306
-    volumes:
-      - /home/mysql/mysql56-data:/var/lib/mysql
 
   adminer:
     image: adminer

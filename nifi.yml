@@ -6,5 +6,3 @@ services:
     ports: 
       - 2888:8080
       - 2022:9191
-    volumes:
-      - /tmp/nifi:/tmp/nifi
