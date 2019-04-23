@@ -13,7 +13,7 @@ services:
     ports: 
       - 3358:3306
     volumes:
-      - E:\shared\mysql8:/var/lib/mysql
+      - E:\Docker\shared\mysql8:/var/lib/mysql
 
   mysql57:
     image: mysql:5.7
@@ -24,7 +24,7 @@ services:
     ports: 
       - 3357:3306
     volumes:
-      - E:\shared\mysql7:/var/lib/mysql
+      - E:\Docker\shared\mysql7:/var/lib/mysql
     
   mysql56:
     image: mysql:5.6
@@ -35,4 +35,4 @@ services:
     ports: 
       - 3356:3306
     volumes:
-      - E:\shared\mysql6:/var/lib/mysql
+      - E:\Docker\shared\mysql6:/var/lib/mysql
