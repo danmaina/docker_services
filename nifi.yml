@@ -6,3 +6,6 @@ services:
     ports: 
       - 2888:8080
       - 2022:9191
+    hostname: nifi
+    container_name: nifi-container
+    restart: unless-stopped
