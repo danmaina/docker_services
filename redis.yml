@@ -2,7 +2,7 @@ version: '2'
 
 services:
   redis:
-    image: 'bitnami/redis:latest'
+    image: 'redis:latest'
     hostname: redis
     restart: unless-stopped
     container_name: redisdocker-container
