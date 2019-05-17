@@ -13,8 +13,8 @@ services:
     image: openzipkin/zipkin-mysql
     container_name: mysql-zipkin
     # Uncomment to expose the storage port for testing
-    # ports:
-    #   - 3306:3306
+    ports:
+       - 3306:3306
 
   # The zipkin process services the UI, and also exposes a POST endpoint that
   # instrumentation can send trace data to. Scribe is disabled by default.
@@ -25,7 +25,7 @@ services:
     environment:
       - STORAGE_TYPE=mysql
       # Point the zipkin at the storage backend
-      - MYSQL_HOST=mysql
+      - MYSQL_HOST=mysql-zipkin
       # Uncomment to enable scribe
       # - SCRIBE_ENABLED=true
       # Uncomment to enable self-tracing
@@ -50,7 +50,7 @@ services:
     entrypoint: crond -f
     environment:
       - STORAGE_TYPE=mysql
-      - MYSQL_HOST=mysql
+      - MYSQL_HOST=mysql-zipkin
       # Add the baked-in username and password for the zipkin-mysql image
       - MYSQL_USER=zipkin
       - MYSQL_PASS=zipkin
