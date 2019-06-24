@@ -1,0 +1,75 @@
+# MySQL Servers
+# Use root/root as user/password credentials
+version: '3.1'
+
+services:
+
+  mysql8:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    hostname: mysql8
+    container_name: mysql8-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports: 
+      - 3358:3306
+    volumes:
+      - /repos/Docker/shared/mysql/mysql8-data:/var/lib/mysql
+
+  mysql57:
+    image: mysql:5.7
+    restart: unless-stopped
+    hostname: mysql57
+    container_name: mysql57-container
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+    ports: 
+      - 3357:3306
+    volumes:
+      - /repos/Docker/shared/mysql/mysql57-data:/var/lib/mysql
+    
+  mysql56:
+    image: mysql:5.6
+    restart: unless-stopped
+    hostname: mysql56
+    container_name: mysql56-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports: 
+      - 3356:3306
+    volumes:
+      - /repos/Docker/shared/mysql/mysql56-data:/var/lib/mysql
+
+  # Redis Server
+  redis:
+    image: 'redis:latest'
+    hostname: redis
+    restart: unless-stopped
+    container_name: redis-container
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      # REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - '6379:6379'
+    volumes:
+      - '/repos/Docker/shared/redis/data:/bitnami/redis/data'
+  
+  # Rabbit MQ Server
+  rabbit:
+  image: rabbitmq:3-management
+  hostname: rabbitmq
+  restart: unless-stopped
+  container_name: rabbitmq-container
+  environment:
+    RABBITMQ_ERLANG_COOKIE: SWQOKODSQALRPCLNMEQG
+    RABBITMQ_DEFAULT_USER: rabbitmq
+    RABBITMQ_DEFAULT_PASS: rabbitmq
+    RABBITMQ_DEFAULT_VHOST: /
+  ports:
+    - 15672:15672
+    - 5672:5672
+volumes:
+  redis_data:
+    driver: local
